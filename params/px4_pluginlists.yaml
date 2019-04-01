@@ -1,0 +1,24 @@
+plugin_blacklist:
+# common
+- hil_controls
+- ftp
+- imu_pub
+- manual_control
+- rc_io
+- safety_area
+- vfr_hud
+# extras
+- cam_imu_sync
+- distance_sensor
+- image_pub
+- px4flow
+- vibration
+- vision_pose_estimate
+- vision_speed_estimate
+- rangefinder
+# mocap_pose_estimate
+
+plugin_whitelist: []
+#- 'sys_*'
+# mocap_pose_estimate
+

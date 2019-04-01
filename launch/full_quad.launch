@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+
+    <group>
+        <!-- MAVROS and vehicle configs -->        
+        <arg name="ID" value="1"/>
+        <arg name="fcu_url" default="udp://:14540@localhost:14557"/>
+        <arg name="vehicle" default="iris"/>
+        <arg name="est" default="ekf2"/>
+        <!-- PX4 SITL and vehicle spawn -->
+        <include file="$(find ai_battle_drone)/launch/vehicle_spawn.launch">
+            <arg name="x" value="10"/>
+            <arg name="y" value="-9"/>
+            <arg name="z" value="0"/>
+            <arg name="R" value="0"/>
+            <arg name="P" value="0"/>
+            <arg name="Y" value="3.14"/>
+            <arg name="vehicle" value="$(arg vehicle)"/>
+            <arg name="rcS" value="$(find px4)/posix-configs/SITL/init/$(arg est)/$(arg vehicle)_$(arg ID)"/>
+            <arg name="mavlink_udp_port" value="14560"/>
+            <arg name="ID" value="$(arg ID)"/>
+        </include>
+        <!-- MAVROS -->
+        <include file="$(find mavros)/launch/px4.launch">
+            <arg name="fcu_url" value="$(arg fcu_url)"/>
+            <arg name="gcs_url" value=""/>
+            <arg name="tgt_system" value="$(arg ID)"/>
+            <arg name="tgt_component" value="1"/>
+        </include>
+        <group ns ="$(arg vehicle)_$(arg ID)/camera_forward">
+            <include file="$(find ai_battle_drone)/launch/apriltag2.launch">
+                <arg name="node_namespace" value="april_tag2"/>
+                <arg name="camera_name" value="/$(arg vehicle)_$(arg ID)/camera_forward"/>
+                <arg name="camera_frame" value="temp1"/>
+            </include>
+        </group>
+        <group ns ="$(arg vehicle)_$(arg ID)/camera_down">
+            <include file="$(find ai_battle_drone)/launch/apriltag2.launch">
+                <arg name="node_namespace" value="april_tag2"/>
+                <arg name="camera_name" value="/$(arg vehicle)_$(arg ID)/camera_down"/>
+                <arg name="camera_frame" value="temp2"/>
+            </include>
+        </group>
+        <node name="image_proc_front" pkg="image_proc" type="image_proc" ns="$(arg vehicle)_$(arg ID)/camera_forward"/>
+        <node name="image_proc_down" pkg="image_proc" type="image_proc" ns="$(arg vehicle)_$(arg ID)/camera_down"/>
+    </group>
+</launch>

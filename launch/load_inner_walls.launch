@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0"/>
+    <arg name="R" default="0"/>
+    <arg name="P" default="0"/>
+    <arg name="Y" default="0"/>>
+    
+    
+
+    <node name="spawn_sdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find ai_drone_gazebo)/models/Inner_Walls_1/model.sdf -sdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg R) -P $(arg P) -Y $(arg Y) -model inner_walls -package_to_model " />
+
+</launch>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ai_battle_drone</name>
+  <version>0.0.0</version>
+  <description>Contains general stuff for ai_battle_drone</description>
+  <maintainer email="michael.d.yocius@lmco.com">Mike Yocius</maintainer>
+
+  <license>Lockheed</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
