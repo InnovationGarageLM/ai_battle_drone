@@ -1,14 +1,14 @@
 - git:
     local-name: ai_battle_drone
-    uri: https://gitlab.us.lmco.com/scil/ai_battle_drone.git
+    uri: https://github.com/InnovationGarageLM/ai_battle_drone.git
     version: master
 - git:
     local-name: gazebo/ai_drone_gazebo
-    uri: https://gitlab.us.lmco.com/scil/ai_drone_gazebo.git
+    uri: https://github.com/InnovationGarageLM/ai_drone_gazebo.git
 
 - git:
     local-name: px4_offboard_example
-    uri: https://gitlab.us.lmco.com/scil/px4_offboard_example.git
+    uri: https://github.com/InnovationGarageLM/px4_offboard_example.git
 - git:
     local-name: foss/apriltags2_ros
     uri: https://github.com/dmalyuta/apriltags2_ros.git
